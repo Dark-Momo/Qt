@@ -1,5 +1,5 @@
-// In order to have a terminal jumping out to run the code, we need to
-// go to "Tools - Option - Build & Run - Run", select "Run In Termina".
+// In order to have a terminal jumping out to run the code, we need to go to
+// "Tools - Option - Build & Run" Or "Edit - Preference - Build & Run", select "Run In Termina".
 // It is not selected by default.
 
 #include <QCoreApplication>
@@ -9,28 +9,30 @@
 #include <QTextStream>
 #include <QDebug>
 
+// You need to run below code in poped-out terminal.
+// Don't use the window integrated in this QT GUI. It doesn't responde with getline().
 void do_cpp(void)
 {
     std::string name;
     std::cout << "Please input your name : ";
     std::getline(std::cin, name);
-    std::cout << "Your name is - " << name << std::endl;
+    std::cout << "Your name is : " << name << std::endl;
 }
 
 void do_qt()
 {
+    // QTextStream and Qt::endl. Don't use std::endl.
     QTextStream qin(stdin);
     QTextStream qout(stdout);
 
     qout << "Please input your name : ";
+    // Above line doesn't output anything itself since QTextStream doesn't flush output buffer.
+    qout.flush(); // Trigger output.
+
+    QString name = qin.readLine();
+
+    qout << "Your name is : " << name << Qt::endl;
     qout.flush();
-
-    QString name = qin.readLine(); // You can assign max length by its argument.
-                                   // Default takes a default max length value.
-
-    qout << "Your name is : " << name << "\n";
-    // qout << "Your name is : " << name << Qt::endl;
-    // qout.flush();
 
     // We need those flush() and Qt::endl at the end of each line that you want to output.
 
@@ -53,7 +55,7 @@ void do_qt()
 void do_mix()
 {
     QTextStream qin(stdin);
-    qInfo() << "Please input your name : ";
+    qInfo() << "Please input your name : "; // QInfo triggers flush and and '/n' at end.
     QString name = qin.readLine();
     qInfo() << "Your name is " << name;
 }
@@ -66,9 +68,9 @@ int main(int argc, char *argv[])
 
     // do_cpp();
 
-    do_qt();
+    // do_qt();
 
-    // do_mix();
+    do_mix();
 
     // End of user code
 
