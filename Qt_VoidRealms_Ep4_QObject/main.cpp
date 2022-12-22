@@ -32,3 +32,14 @@ int main(int argc, char *argv[])
     return ret;
     // return a.exec();
 }
+
+// When 'QCoreApplication a' is created, it doesn't know 'QObjectExample QobjExam', but they can communicate later
+// by connect(). Why? QT has something called MOC (Meta Object Compiler). It will scan your file, pick any QObject
+// you define, process at backend to enable, some mechanism, to make them communicate.
+// ---------------------------------------------------------------------------------------------------------------------------
+// The meta-object system is based on three things:
+// 1. The QObject class provides a base class for objects that can take advantage of the meta-object system.
+// 2. The Q_OBJECT macro inside the private section of the class declaration is used to enable meta-object features, such as
+//    dynamic properties, signals, and slots.
+// 3. The Meta-Object Compiler (moc) supplies each QObject subclass with the necessary code to implement meta-object features.
+// ---------------------------------------------------------------------------------------------------------------------------

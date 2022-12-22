@@ -5,7 +5,9 @@
 
 class QObjectExample : public QObject
 {
-    Q_OBJECT // This makes a QObject, a QObject.
+    // The Q_OBJECT macro inside the private section of the class declaration is used to enable meta-object features,
+    // such as dynamic properties, signals, and slots.
+    Q_OBJECT
 public:
     // This ctor, depending on what parent you give, make itself child of the parent.
     // When the parent is deleted, all its children will be deleted.
