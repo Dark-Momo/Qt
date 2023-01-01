@@ -66,11 +66,11 @@ int main(int argc, char *argv[])
 
     // User code begins here
 
-    // do_cpp();
+    do_cpp();
 
     // do_qt();
 
-    do_mix();
+    // do_mix();
 
     // End of user code
 

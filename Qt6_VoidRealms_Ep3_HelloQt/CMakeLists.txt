@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Qt_VoidRealms_Ep3_HelloQt LANGUAGES CXX)
+project(Qt6_VoidRealms_Ep3_HelloQt LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
-add_executable(Qt_VoidRealms_Ep3_HelloQt
+add_executable(Qt6_VoidRealms_Ep3_HelloQt
   main.cpp
 )
-target_link_libraries(Qt_VoidRealms_Ep3_HelloQt Qt${QT_VERSION_MAJOR}::Core)
+target_link_libraries(Qt6_VoidRealms_Ep3_HelloQt Qt${QT_VERSION_MAJOR}::Core)

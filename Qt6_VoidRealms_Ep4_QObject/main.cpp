@@ -9,7 +9,6 @@
 // 2. In CMakeLists.txt, add your class's .h and .cpp file name in add_executable field after main.cpp.
 //    Then, after Save, you will see these 2 files.
 
-
 #include <QCoreApplication>
 
 #include "qobjectexample.h"
