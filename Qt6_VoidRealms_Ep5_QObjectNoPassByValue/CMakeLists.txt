@@ -14,6 +14,8 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(Qt6_VoidRealms_Ep5_QObjectNoPassByValue
   main.cpp
+  qobjectexample.h
+  qobjectexample.cpp
 )
 target_link_libraries(Qt6_VoidRealms_Ep5_QObjectNoPassByValue Qt${QT_VERSION_MAJOR}::Core)
 
