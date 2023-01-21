@@ -5,8 +5,8 @@
 
 // -----------------------------------------------------------------------------------------------------------------------------
 // FOR QOBJECT, IF YOU INITIALIZE ONR QOBJECT FROM ANOTHER, THAT QOBJECT WILL BE YOUR PARENT.
-// QObjectonly has ONLY one Ctor : QObject::QObject(QObject *parent = nullptr);
-// ITSELF DOESN'T DENOTE THIS ARENT-CHILD RELATION, BUT I GUESS QT WILL DO SOME BACKGROUND WORK TO
+// QObject class itself, has ONLY one Ctor : QObject::QObject(QObject *parent = nullptr);
+// ITSELF DOESN'T DENOTE THIS PARENT-CHILD RELATION, BUT I GUESS QT WILL DO SOME BACKGROUND WORK TO
 // RECORD THIS PARENT-CHILD RELATION FOR MEMORY MANAGEMENT.
 // -----------------------------------------------------------------------------------------------------------------------------
 
@@ -36,6 +36,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
 
     QTimer timer;
+    // Below line will terminate a, and then trigger parent-child
+    // relation to delete momo and kuku.
     timer.singleShot(3000, &a, &QCoreApplication::quit);
 
     // 2. Create a Child. Set Parent-Child Relationship.
