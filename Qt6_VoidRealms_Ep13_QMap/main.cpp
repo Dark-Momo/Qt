@@ -38,6 +38,30 @@ void showPersonInstance(NickName &family)
 
 }
 
+// Here we add key and its value without checking whether the key already exists.
+// When we add the 2nd instance with the same key, at inserting, the value of the 1st
+// instance, here, the sharedpointer, will be deleted automatically.
+void addPersonInstance(NickName &family, QString str)
+{
+    QSharedPointer<person> ptr(new person());
+    ptr->setName(QString(str));
+    ptr->setAge(10);
+    qInfo() << "Before insert added item...";
+    family.insert("TestAdded", ptr);
+    qInfo() << "After insert added item...";
+}
+// Output:
+/*
+-- Add 2 instance:
+Person object : person(0x564e82053f40)  is constructed!
+Before insert added item...
+After insert added item...
+Person object : person(0x564e820540f0)  is constructed!
+Before insert added item...
+Person object : person(0x564e82053f40)  is destructed!
+After insert added item...
+*/
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -52,15 +76,19 @@ int main(int argc, char *argv[])
 
     qInfo() << stuInfo["Yu Han"];
     qInfo() << "-------------------------------------------";
+
     // Complex Example
     NickName family;
     setPersonInstance(family);
-    qInfo() << "Show family info:";
+
+    qInfo() << "-- Show family info:";
     showPersonInstance(family);
 
-
-
-
+    qInfo() << "-- Add 2 instance:";
+    addPersonInstance(family, "Huang1");
+    addPersonInstance(family, "Huang2");
+    qInfo() << "-- Show family info:";
+    showPersonInstance(family);
 
 
     return a.exec();
